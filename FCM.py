@@ -231,7 +231,7 @@ def assign(instance, centroids, m):
 			
     return each_uij
 
-def assignAll(dataset, centroids, m):
+def initializeMembershipMatrix(dataset, centroids, m):
     ### calculate membership values for a sample, i.e., each_uij value
     membershipList = []
     for instance in dataset:
@@ -281,7 +281,7 @@ def runFuzzyCMeans(selectedCentroids, dataset, K, m, initCentroids=None):
     while not (stopWithThreshold(CentroidList, oldCentroids, iterations, FuzzyW, oldFuzzyW)):	
         iterations += 1
         #### CALCULATE MEMBERSHIP MATRIX 
-        membershipList = assignAll(dataset, CentroidList, m)
+        membershipList = initializeMembershipMatrix(dataset, CentroidList, m)
 		
         #### STORE PREVIOUS CENTROID VALUES
         oldCentroids = list(CentroidList)
